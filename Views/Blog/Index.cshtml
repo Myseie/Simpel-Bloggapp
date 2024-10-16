@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h2>Blogg</h2>
+
+<a asp-action="Create">Skapa ett inlägg</a>
+
+@if(Model.Count == 0)
+{
+    <p>Inga inlägg tillgängligt</p>
+}
+else
+{
+    <ul>
+        @foreach(var post in Model)
+        {
+            <li>
+                <h3>@post.Title</h3> <br />
+                <p>@post.Content</p>
+                <p><em>@post.Date.ToString("g")</em></p>
+                <a asp-action="Edit" asp-route-id="@Model.IndexOf(post)">Redigera</a>
+                <form asp-action="Delete" method="post" style="display:inline">
+                    <input type="hidden" name="id" value="@Model.IndexOf(post)" />
+                    <button type="submit">Ta bort</button>
+                </form>
+            </li>
+        }
+    </ul>
+}

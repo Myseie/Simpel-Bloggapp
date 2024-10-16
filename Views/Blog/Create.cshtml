@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h2>Skapa ett inlägg</h2>
+
+@if(!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+
+<form asp-action="Create" method="post">
+    <input type="text" name="Title" placeholder="Inläggets titel" /> <br />
+    <textarea name="content" placeholder="Skriv ditt inlägg här...">
+
+    </textarea>
+    <button type="submit">Skapa</button>
+</form>
+
+<a asp-action="Index">Tillbaka till bloggen</a>

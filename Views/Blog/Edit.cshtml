@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Redigera</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <p style="color:red"> @ViewBag.Error</p>
+
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="id" value="@ViewBag.Id" />
+    <input type="text" name="title" value="@ViewBag.Title" />
+    <textarea name="content">@Model.Content
+    </textarea>
+    <button type="submit">Updatera</button>
+</form>
+
+<a asp-action="Index">Tillbaka till bloggen</a>
